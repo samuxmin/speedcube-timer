@@ -5,6 +5,7 @@ var isStarted = false;
 const timerDom = document.getElementById("timer");
 const timeList = document.querySelector(".time-list")
 const avg = document.getElementById('average')
+const btnStart = document.getElementById("btn-start")
 
 var times = JSON.parse(localStorage.getItem('times')) || [];
 
@@ -46,6 +47,7 @@ function startTimer(){
         timer += 0.01;
         timerDom.innerText = timer.toFixed(2)
     }, 10)
+    btnStart.disabled = true;
 }
 
 function stopTimer () {
@@ -60,6 +62,7 @@ function stopTimer () {
     calculateAvg()
     getTimes()
     timer = 0
+    btnStart.disabled = false;
 }
 
 document.addEventListener('keyup', e => {
